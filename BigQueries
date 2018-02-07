@@ -1,0 +1,54 @@
+# SQL used in BigQuery to narrow down search for CVille Data #
+
+### To get posts mentioning CVille in Aug 
+SELECT  * FROM [fh-bigquery:reddit_comments.2017_08] WHERE REGEXP_MATCH(LOWER(body),r'charlottesville')
+
+### Break that in half to Query further
+SELECT * FROM [arched-cabinet-193904:cville_reddit.results_20180201_003355] WHERE created_utc BETWEEN 502856000 AND 1501560000
+
+### Aug 1 - 12 set
+SELECT
+  *
+FROM
+  [arched-cabinet-193904:cville_reddit.CvilleAug1_Aug16]
+WHERE
+  created_utc BETWEEN 1501560000
+  AND 1502510400;
+  
+  
+### Aug 13
+SELECT
+  *
+FROM
+  [arched-cabinet-193904:cville_reddit.CvilleAug1_Aug16]
+WHERE
+  created_utc BETWEEN 1501560000
+  AND 1502596800
+ORDER BY
+  created_utc;
+  
+### Aug 14
+SELECT
+  *
+FROM
+  [arched-cabinet-193904:cville_reddit.CvilleAug1_Aug16]
+WHERE
+  created_utc BETWEEN 1502596800
+  AND 1502856000
+ORDER BY
+  created_utc;
+  
+### Aug 15
+SELECT
+  *
+FROM
+  [arched-cabinet-193904:cville_reddit.CvilleAug1_Aug16]
+WHERE
+  created_utc BETWEEN 1502596800
+  AND 1502683200
+ORDER BY
+  created_utc;
+  
+  
+  
+  
